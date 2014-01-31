@@ -51,6 +51,24 @@ nnoremap <Plug>(easyoperator-line-delete)
 nnoremap <Plug>(easyoperator-line-yank)
     \ :call easyoperator#line#selectlinesyank()<CR>
 
+let g:EasyOperator_line_do_mapping = get(
+    \ g:, 'EasyOperator_line_do_mapping', 1)
+if g:EasyOperator_line_do_mapping
+        \ && !hasmapto('<Plug>(easyoperator-line-select)')
+        \ && empty(maparg( '<Plug>(easymotion-prefix)p', 'ov'))
+        \ && empty(maparg('d<Plug>(easymotion-prefix)p', 'n' ))
+        \ && empty(maparg('y<Plug>(easymotion-prefix)p', 'n' ))
+
+    if !hasmapto('<Plug>(easymotion-prefix)')
+        map <Leader><Leader> <Plug>(easymotion-prefix)
+    endif
+
+    omap <silent>  <Plug>(easymotion-prefix)l <Plug>(easyoperator-line-select)
+    xmap <silent>  <Plug>(easymotion-prefix)l <Plug>(easyoperator-line-select)
+    nmap <silent> d<Plug>(easymotion-prefix)l <Plug>(easyoperator-line-delete)
+    nmap <silent> y<Plug>(easymotion-prefix)l <Plug>(easyoperator-line-yank)
+endif
+
 " Highlight:
 let s:shade_hl_line_defaults = {
     \   'gui'     : ['red' , '#FFFFFF' , 'NONE']
