@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: plugin/easyoperator/line.vim
 " AUTHOR: haya14busa
-" Last Change: 31 Jan 2014.
+" Last Change: 10 Feb 2014.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -78,7 +78,7 @@ let s:shade_hl_line_defaults = {
 
 let g:EasyOperator_line_first     = get(g:,
     \ 'EasyOperator_line_first', 'EasyOperatorFirstLine')
-call EasyMotion#init#InitHL(g:EasyOperator_line_first,  s:shade_hl_line_defaults)
+call EasyMotion#highlight#InitHL(g:EasyOperator_line_first,  s:shade_hl_line_defaults)
 
 " Restore 'cpoptions' {{{
 let &cpo = s:save_cpo
